@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phoenix Solutions | Software B2B de Misión Crítica en Panamá</title>
+  <meta name="description" content="Desarrollo y gestión de software B2B en Coclé, Panamá. Facturación electrónica DGI para PyMEs y trazabilidad ganadera MIDA sobre arquitectura de contenedores Docker aislados.">
+  <meta name="keywords" content="Phoenix Solutions, Software Coclé, Facturación Electrónica Panamá, DGI, PAC, ITBMS, Trazabilidad MIDA, Ganadería Penonomé, Software B2B Panamá, Docker Single Tenant, Ley 81 Panamá, Josue Flores, Adrian Pérez, Celeste Pérez">
+  <meta name="author" content="Phoenix Solutions Panamá">
+
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Phoenix Solutions | Software B2B de Misión Crítica en Panamá">
+  <meta property="og:description" content="Sistemas de Facturación DGI y Plataforma Ganadera MIDA con soporte presencial en Penonomé, Aguadulce, Antón y Natá.">
+  <meta property="og:locale" content="es_PA">
+
+  <!-- Script para prevenir parpadeo de tema (Dark Mode predeterminado con soporte Light Mode) -->
+  <script>
+    if (localStorage.theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS v3.4 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#060a12',
+              surface: '#0c1322',
+              card: '#111b2e',
+              cardHover: '#16233b',
+              border: '#1e293b',
+              accent: '#f97316',        /* Phoenix Flame Orange */
+              accentHover: '#ea580c',
+              accentGlow: 'rgba(249, 115, 22, 0.15)',
+              amber: '#fbbf24',
+              gold: '#f59e0b',
+              muted: '#94a3b8',
+              light: '#f8fafc',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          boxShadow: {
+            'glow': '0 0 40px -10px rgba(249, 115, 22, 0.25)',
+            'subtle': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+            'card': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Emil Kowalski Craft Polish & Tactile Physics */
+    body {
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    ::selection {
+      background-color: #f97316;
+      color: #ffffff;
+    }
+
+    /* Tactile button active states */
+    .tactile-btn {
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tactile-btn:active {
+      transform: scale(0.975) translateY(1px);
+    }
+
+    /* Card hover elevation */
+    .craft-card {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .craft-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Grid pattern adaptativo */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060a12;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #060a12;
+    }
+    html:not(.dark) ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f97316;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-brand-dark text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- HEADER & NAVIGATION                                                      -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 dark:bg-brand-dark/85 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
+      
+      <!-- Brand Logo & Monogram -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-lg p-1">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-accent via-orange-600 to-brand-amber p-0.5 shadow-md shadow-brand-accent/20 group-hover:shadow-brand-accent/40 transition-all duration-200">
+          <div class="w-full h-full bg-slate-900 dark:bg-brand-surface rounded-[10px] flex items-center justify-center">
+            <!-- Phoenix Stylized Mark SVG -->
+            <svg class="w-5 h-5 text-brand-accent group-hover:scale-110 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c0 4.5-3 6.5-3 10 0 3.3 2.7 6 6 6s6-2.7 6-6c0-3.5-3-5.5-3-10-1.5 2-3 3-4.5 3S12.5 4 12 2z"/>
+              <path d="M8.5 14c-1.5-.5-3.5-1.8-3.5-4 0 2.5 2 5 5 5.5"/>
+              <path d="M15.5 14c1.5-.5 3.5-1.8 3.5-4 0 2.5-2 5-5 5.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-base tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+            PHOENIX <span class="text-brand-accent font-semibold tracking-wider text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 border border-brand-accent/20">SOLUTIONS</span>
+          </span>
+          <span class="text-[10px] font-mono tracking-widest text-slate-500 dark:text-slate-400 uppercase">Coclé • Panamá</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="#soluciones" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white transition-colors duration-150">Soluciones</a>
+        <a href="#arquitectura" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white transition-colors duration-150">Arquitectura</a>
+        <a href="#cumplimiento" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white transition-colors duration-150">Cumplimiento Legal</a>
+        <a href="#liderazgo" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white transition-colors duration-150">Equipo</a>
+        <a href="#cobertura" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white transition-colors duration-150">Cobertura Local</a>
+      </nav>
+
+      <!-- Desktop Right Controls: Theme Toggle & CTAs -->
+      <div class="hidden md:flex items-center gap-3">
+        
+        <!-- Interactive Theme Switcher (Claro / Oscuro) -->
+        <button id="themeToggleBtn" 
+                type="button" 
+                onclick="toggleTheme()" 
+                class="tactile-btn p-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-brand-surface text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-brand-accent focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                title="Alternar entre modo claro y oscuro"
+                aria-label="Cambiar tema de color">
+          <!-- Moon icon for light mode (click to go dark) -->
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4 hidden"></i>
+          <!-- Sun icon for dark mode (click to go light) -->
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4"></i>
+        </button>
+
+        <a href="https://wa.me/50760000000?text=Hola%20Phoenix%20Solutions,%20deseo%20solicitar%20una%20demostraci%C3%B3n%20personalizada." 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 px-3 py-1.5 rounded-lg border border-emerald-500/20 bg-emerald-500/10 hover:bg-emerald-500/20 transition-all duration-150">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>WhatsApp Directo</span>
+        </a>
+
+        <a href="#contacto" 
+           class="tactile-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-brand-accent to-orange-600 hover:from-orange-500 hover:to-brand-accent text-white font-semibold text-xs tracking-wide shadow-md shadow-brand-accent/20 hover:shadow-brand-accent/35 focus:ring-2 focus:ring-brand-accent focus:outline-none">
+          <span>Solicitar Demo</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger & Theme Toggle -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button type="button" 
+                onclick="toggleTheme()" 
+                class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-brand-surface text-slate-700 dark:text-slate-300"
+                aria-label="Cambiar tema">
+          <i data-lucide="sun" id="mobileSunIcon" class="w-4 h-4"></i>
+        </button>
+
+        <button id="mobileMenuBtn" 
+                type="button" 
+                class="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                aria-label="Abrir Menú de Navegación">
+          <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-brand-dark/95 backdrop-blur-xl px-6 py-6 space-y-4">
+      <a href="#soluciones" class="mobile-link block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-accent py-2">Soluciones (PyMEs & Agro)</a>
+      <a href="#arquitectura" class="mobile-link block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-accent py-2">Arquitectura Docker Single-Tenant</a>
+      <a href="#cumplimiento" class="mobile-link block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-accent py-2">Cumplimiento Ley 81 (Panamá)</a>
+      <a href="#liderazgo" class="mobile-link block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-accent py-2">Equipo Fundador</a>
+      <a href="#cobertura" class="mobile-link block text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-brand-accent py-2">Soporte Presencial Coclé</a>
+      <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+        <a href="https://wa.me/50760000000?text=Hola%20Phoenix%20Solutions,%20deseo%20m%C3%A1s%20informaci%C3%B3n." 
+           target="_blank" 
+           class="w-full text-center py-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          WhatsApp (+507 6000-0000)
+        </a>
+        <a href="#contacto" class="mobile-link w-full text-center py-2.5 rounded-lg bg-brand-accent text-white text-xs font-semibold shadow-md shadow-brand-accent/25">
+          Solicitar Demo Presencial
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================= -->
+    <!-- HERO SECTION                                                             -->
+    <!-- ========================================================================= -->
+    <section class="relative pt-32 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-grid-pattern">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-accent/10 rounded-full blur-[130px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Hero Left Column -->
+          <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-medium">
+              <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+              <span>Presencia y Operaciones Directas en Coclé & Provincias Centrales</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+              Software B2B de Misión Crítica <br class="hidden sm:inline">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-brand-accent dark:from-white dark:via-slate-100 dark:to-brand-accent">
+                para la Realidad Operativa de Panamá
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal leading-relaxed max-w-xl">
+              Elimine ineficiencias con soluciones híbridas de alta disponibilidad: Facturación electrónica DGI y trazabilidad pecuaria MIDA bajo contenedores Docker aislados.
+            </p>
+
+            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <a href="#soluciones" 
+                 class="tactile-btn inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-accent to-orange-600 hover:from-orange-500 hover:to-brand-accent text-white font-semibold text-sm shadow-lg shadow-brand-accent/25 hover:shadow-brand-accent/40 focus:ring-2 focus:ring-brand-accent focus:outline-none">
+                <span>Explorar Soluciones</span>
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+              </a>
+
+              <a href="#contacto" 
+                 class="tactile-btn inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-brand-surface/80 hover:bg-slate-100 dark:hover:bg-brand-card text-slate-800 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white font-semibold text-sm transition-colors focus:ring-2 focus:ring-slate-400 focus:outline-none">
+                <i data-lucide="phone-call" class="w-4 h-4 text-brand-accent"></i>
+                <span>Contactar Asesor Local</span>
+              </a>
+            </div>
+
+            <!-- Proof Points -->
+            <div class="pt-6 border-t border-slate-200 dark:border-slate-800/80 grid grid-cols-3 gap-4 text-left">
+              <div>
+                <p class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono">100%</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Cumplimiento DGI & MIDA</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-bold text-brand-accent font-mono">0%</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fuga de Datos (Single-Tenant)</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400 font-mono">&lt; 2h</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Respuesta Presencial en Coclé</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Right Column: Live Telemetry Widget -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-brand-surface/90 shadow-2xl overflow-hidden backdrop-blur-xl">
+              <div class="px-4 py-3 bg-slate-100 dark:bg-brand-dark/90 border-b border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                  <span class="ml-2 font-mono text-[11px] text-slate-600 dark:text-slate-400">phoenix-cluster-cocle.pa</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  LIVE NODE
+                </div>
+              </div>
+
+              <div class="p-5 space-y-4 font-mono text-xs">
+                <div class="bg-slate-50 dark:bg-brand-card/90 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 text-[11px]">
+                    <span class="flex items-center gap-1.5">
+                      <i data-lucide="container" class="w-3.5 h-3.5 text-brand-accent"></i>
+                      Docker Instance Isolation
+                    </span>
+                    <span class="text-emerald-600 dark:text-emerald-400 font-semibold">ONLINE (Linux x86_64)</span>
+                  </div>
+                  <div class="text-[11px] text-slate-700 dark:text-slate-300 font-mono">
+                    <span class="text-slate-400 dark:text-slate-500">client_env:</span> client_cocle_tenant_04<br>
+                    <span class="text-slate-400 dark:text-slate-500">storage:</span> Encrypted Volume (AES-256)<br>
+                    <span class="text-slate-400 dark:text-slate-500">compliance:</span> Ley 81 de 2019 [AUDITED]
+                  </div>
+                </div>
+
+                <div class="space-y-2 text-[11px]">
+                  <div class="p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                      <span class="text-slate-800 dark:text-slate-200">Factura Electrónica DGI #B-4921</span>
+                    </div>
+                    <span class="text-emerald-600 dark:text-emerald-400 font-semibold">PAC TIMBRADO (0.34s)</span>
+                  </div>
+
+                  <div class="p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                      <span class="text-slate-800 dark:text-slate-200">Guía Sanitaria MIDA #GS-Coclé-88</span>
+                    </div>
+                    <span class="text-amber-600 dark:text-amber-400 font-semibold">TRAZABILIDAD OK</span>
+                  </div>
+
+                  <div class="p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                      <span class="text-slate-800 dark:text-slate-200">Sincronización POS Penonomé</span>
+                    </div>
+                    <span class="text-blue-600 dark:text-blue-400 font-semibold">ITBMS 7% CALC</span>
+                  </div>
+                </div>
+
+                <div class="pt-2 text-[10px] text-slate-500 dark:text-slate-400 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-accent"></i>
+                    Aislamiento Físico por Inquilino
+                  </span>
+                  <span class="text-slate-500">Latencia: 14ms (Coclé)</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN DE SOLUCIONES                                                    -->
+    <!-- ========================================================================= -->
+    <section id="soluciones" class="py-24 bg-slate-100/60 dark:bg-brand-surface/40 border-t border-slate-200 dark:border-slate-850 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-12">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Dos Líneas de Especialización Diseñadas para el Sector Productivo
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">
+            Combinamos un núcleo de software estandarizado y estable con módulos personalizados según la dinámica económica y regulatoria de su negocio.
+          </p>
+        </div>
+
+        <!-- Selector Tabs -->
+        <div class="flex flex-wrap gap-3 mb-10 p-1.5 rounded-xl bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 max-w-fit shadow-sm">
+          <button id="tabPymeBtn" 
+                  type="button"
+                  onclick="switchTab('pyme')" 
+                  class="tactile-btn px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-brand-accent text-white shadow-md shadow-brand-accent/25">
+            <i data-lucide="store" class="w-4 h-4"></i>
+            <span>Comercios & PyMEs (Facturación DGI)</span>
+          </button>
+          
+          <button id="tabAgroBtn" 
+                  type="button"
+                  onclick="switchTab('agro')" 
+                  class="tactile-btn px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+            <i data-lucide="tractor" class="w-4 h-4"></i>
+            <span>Fincas & Ganadería (Normativa MIDA)</span>
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: PYMES DGI -->
+        <div id="tabPymeContent" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="craft-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-brand-card/90 border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm dark:shadow-card">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-brand-accent">
+                  <i data-lucide="receipt" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Sistemas de Facturación, Inventario y POS</h3>
+                  <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Diseñado para supermercados, ferreterías, farmacias y abarroterías en Coclé</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-brand-accent font-semibold text-sm">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                    <span>Facturación Electrónica DGI</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Integración fluida con Proveedores de Autorización Calificada (PAC) autorizados en Panamá. Emisión de comprobantes fiscales electrónicos válidos en milisegundos.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-brand-accent font-semibold text-sm">
+                    <i data-lucide="calculator" class="w-4 h-4"></i>
+                    <span>Cálculo Automatizado de ITBMS</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Desglose automático de tasas del 7%, 10% y 15% según el tipo de rubro, garantizando reportes fiscales periódicos listos para el Formulario 433 de la DGI.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-brand-accent font-semibold text-sm">
+                    <i data-lucide="boxes" class="w-4 h-4"></i>
+                    <span>Control Multi-Bodega & Stock</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Seguimiento en tiempo real de existencias, compras a proveedores mayoristas, alertas de vencimiento de productos y arqueo de caja por turnos.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-brand-accent font-semibold text-sm">
+                    <i data-lucide="wifi-off" class="w-4 h-4"></i>
+                    <span>Operación Resiliente Offline</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Si se interrumpe el internet local, el punto de venta continúa facturando localmente y sincroniza automáticamente las ventas al restablecerse la red.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-xs text-slate-500 dark:text-slate-400">Implementación llave en mano con equipos fiscales e impresoras térmicas.</span>
+                <a href="#contacto" class="tactile-btn text-xs font-semibold text-brand-accent hover:text-orange-600 flex items-center gap-1">
+                  <span>Cotizar Módulo Comercial</span>
+                  <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div class="rounded-2xl p-6 bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                <i data-lucide="layers" class="w-4 h-4 text-brand-accent"></i>
+                Ficha Técnica: Módulo PyME
+              </h4>
+              <ul class="space-y-3 text-xs text-slate-700 dark:text-slate-300 font-mono">
+                <li class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Protocolo Fiscal:</span>
+                  <span class="text-slate-900 dark:text-slate-200 font-semibold">API REST PAC / DGI XML 2.1</span>
+                </li>
+                <li class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Hardware Compatible:</span>
+                  <span class="text-slate-900 dark:text-slate-200">Lectores 1D/2D, Gavetas, POS táctil</span>
+                </li>
+                <li class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Reportes Financieros:</span>
+                  <span class="text-slate-900 dark:text-slate-200">Ventas diarias, márgenes, IVA/ITBMS</span>
+                </li>
+                <li class="flex items-center justify-between py-2">
+                  <span class="text-slate-500 dark:text-slate-400">Instalación:</span>
+                  <span class="text-emerald-600 dark:text-emerald-400 font-semibold">En sitio (Coclé) + Respaldo Cloud</span>
+                </li>
+              </ul>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-400 flex items-start gap-2.5">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i>
+                <span>Protege a su comercio contra multas y sanciones tributarias mediante validación previa de RUC y DV antes de cada emisión.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: AGROPECUARIA MIDA -->
+        <div id="tabAgroContent" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="craft-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-brand-card/90 border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm dark:shadow-card">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
+                  <i data-lucide="beef" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Plataforma de Gestión Ganadera & Pecuaria</h3>
+                  <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Optimizado para fincas de cría, levante y ceba en Coclé y provincias centrales</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-amber-500 font-semibold text-sm">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                    <span>Trazabilidad Oficial MIDA</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Registro individual de aretes y chapas oficiales. Historial zootécnico completo desde el nacimiento hasta la venta final o matadero.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-amber-500 font-semibold text-sm">
+                    <i data-lucide="flame" class="w-4 h-4"></i>
+                    <span>Control de Marcas de Hierro</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Digitalización de marcas y fierros registrados ante los Municipios locales (Penonomé, Antón, Natá, Aguadulce) para evitar conflictos de propiedad.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-amber-500 font-semibold text-sm">
+                    <i data-lucide="file-check-2" class="w-4 h-4"></i>
+                    <span>Guías Sanitarias de Traslado</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Gestión preventiva de requisitos sanitarios para expedición ágil de guías de movilización y control de cuarentenas y vacunación (Brucelosis/Tuberculosis).
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-brand-surface/70 border border-slate-200 dark:border-slate-800 space-y-2">
+                  <div class="flex items-center gap-2 text-amber-500 font-semibold text-sm">
+                    <i data-lucide="scale" class="w-4 h-4"></i>
+                    <span>Pesaje & Ganancia Diaria (GDP)</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Monitoreo de curvas de crecimiento por potrero, rotación de pasturas y conversión alimenticia para maximizar la rentabilidad por hectárea.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200 dark:border-slate-800">
+                <span class="text-xs text-slate-500 dark:text-slate-400">Probado en condiciones reales de campo bajo climas húmedos y zonas rurales.</span>
+                <a href="#contacto" class="tactile-btn text-xs font-semibold text-amber-500 hover:text-amber-600 flex items-center gap-1">
+                  <span>Solicitar Asesoría Ganadera</span>
+                  <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div class="rounded-2xl p-6 bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+              <h4 class="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                <i data-lucide="binary" class="w-4 h-4 text-amber-500"></i>
+                Ficha Técnica: Módulo Ganadero
+              </h4>
+              <ul class="space-y-3 text-xs text-slate-700 dark:text-slate-300 font-mono">
+                <li class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Normativa Vigente:</span>
+                  <span class="text-slate-900 dark:text-slate-200 font-semibold">Protocolo MIDA Panamá Bovino</span>
+                </li>
+                <li class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Dispositivos en Manga:</span>
+                  <span class="text-slate-900 dark:text-slate-200">Básculas digitales & Bastones RFID</span>
+                </li>
+                <li class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                  <span class="text-slate-500 dark:text-slate-400">Registros Sanitarios:</span>
+                  <span class="text-slate-900 dark:text-slate-200">Vacunas, desparasitaciones, preñeces</span>
+                </li>
+                <li class="flex items-center justify-between py-2">
+                  <span class="text-slate-500 dark:text-slate-400">Soporte Técnico:</span>
+                  <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Visitas directas a potrero en Coclé</span>
+                </li>
+              </ul>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-400 flex items-start gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                <span>Permite a los ganaderos presentar informes fidedignos ante subastas ganaderas, cooperativas y bancos de desarrollo agropecuario (BDA).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN DE ARQUITECTURA                                                  -->
+    <!-- ========================================================================= -->
+    <section id="arquitectura" class="py-24 bg-white dark:bg-brand-dark relative border-t border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-14">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Aislamiento Total: Arquitectura Single-Tenant en Contenedores Docker
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">
+            A diferencia de los SaaS comerciales tradicionales donde cientos de empresas comparten la misma base de datos, Phoenix Solutions garantiza instancias dedicadas e independientes para cada cliente.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="craft-card rounded-2xl p-7 bg-slate-50 dark:bg-brand-surface/90 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent">
+              <i data-lucide="server" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Contenedores Dedicados</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Cada cliente cuenta con un entorno Docker privado sobre servidores Linux. Sus transacciones, inventarios y clientes nunca comparten memoria ni almacenamiento con otros comercios.
+            </p>
+            <div class="pt-2 text-[11px] font-mono text-brand-accent flex items-center gap-1.5 font-semibold">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              <span>Cero Riesgo de Contaminación Cruzada</span>
+            </div>
+          </div>
+
+          <div class="craft-card rounded-2xl p-7 bg-slate-50 dark:bg-brand-surface/90 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+              <i data-lucide="hard-drive-download" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Copias de Seguridad Cifradas</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Snapshots automáticos periódicos con cifrado AES-256. Respaldo local en el establecimiento más replicación externa redundante para recuperación ante desastres en menos de 15 minutos.
+            </p>
+            <div class="pt-2 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 font-semibold">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              <span>RTO &lt; 15m | RPO &lt; 1h</span>
+            </div>
+          </div>
+
+          <div class="craft-card rounded-2xl p-7 bg-slate-50 dark:bg-brand-surface/90 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+              <i data-lucide="cpu" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Núcleo Híbrido Modular</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              La base tecnológica permanece estable y probada, mientras que los módulos de facturación, compras y reportería se adaptan con precisión quirúrgica a las particularidades de su operativa.
+            </p>
+            <div class="pt-2 text-[11px] font-mono text-blue-600 dark:text-blue-400 flex items-center gap-1.5 font-semibold">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              <span>Escalabilidad Vertical sin Fricción</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN DE CUMPLIMIENTO LEGAL (Ley 81 de 2019)                            -->
+    <!-- ========================================================================= -->
+    <section id="cumplimiento" class="py-20 bg-slate-100/60 dark:bg-brand-surface/30 border-t border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl p-8 sm:p-12 bg-white dark:bg-gradient-to-br dark:from-brand-card dark:via-brand-surface dark:to-brand-dark border border-slate-200 dark:border-slate-800 shadow-xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-8 space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+                <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+                <span>Marco Regulatorio Nacional</span>
+              </div>
+              
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Cumplimiento Estricto con la Ley 81 de 2019 de Protección de Datos Personales
+              </h3>
+              
+              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                En Panamá, la privacidad y custodia de los datos de sus clientes y proveedores no es opcional. Nuestros sistemas implementan principios de consentimiento informado, trazabilidad estricta de accesos por usuario y políticas de no retención innecesaria, blindando a su negocio ante auditorías de ANTAI y la DGI.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                <div class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-200">
+                  <i data-lucide="lock" class="w-4 h-4 text-brand-accent"></i>
+                  <span>Cifrado de Puntos Finales</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-200">
+                  <i data-lucide="user-check" class="w-4 h-4 text-brand-accent"></i>
+                  <span>Control de Roles & Privilegios</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-200">
+                  <i data-lucide="history" class="w-4 h-4 text-brand-accent"></i>
+                  <span>Logs de Auditoría Inmutables</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-4 flex justify-center lg:justify-end">
+              <div class="p-6 rounded-2xl bg-slate-50 dark:bg-brand-dark/90 border border-slate-200 dark:border-slate-700/80 text-center space-y-3 w-full max-w-sm">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                  <i data-lucide="badge-check" class="w-8 h-8"></i>
+                </div>
+                <p class="text-base font-bold text-slate-900 dark:text-white">Soberanía de Datos</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  Sus bases de datos le pertenecen en su totalidad. Exportación íntegra en cualquier momento en formatos abiertos (SQL/CSV/JSON).
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN DE EQUIPO FUNDADOR & LIDERAZGO                                   -->
+    <!-- ========================================================================= -->
+    <section id="liderazgo" class="py-24 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-medium mb-3">
+            <i data-lucide="users" class="w-3.5 h-3.5"></i>
+            <span>Equipo Fundador & Dirección</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Liderazgo Tecnológico con Compromiso Local en Panamá
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">
+            Ingenieros y especialistas panameños con visión de software de clase mundial y conocimiento profundo del contexto productivo de Coclé y provincias centrales.
+          </p>
+        </div>
+
+        <!-- Founders 3-Card Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Josue Flores (CTO & Fundador) -->
+          <div class="craft-card rounded-2xl p-7 bg-slate-50 dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-5 shadow-sm">
+            <div class="flex items-center gap-4">
+              <!-- Avatar Monogram -->
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-accent via-orange-600 to-amber-500 p-0.5 shadow-md shadow-brand-accent/25 shrink-0">
+                <div class="w-full h-full bg-slate-900 dark:bg-brand-card rounded-[14px] flex items-center justify-center text-white font-extrabold text-lg tracking-wider">
+                  JF
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Josue Flores</h3>
+                <p class="text-xs font-semibold text-brand-accent font-mono">Director de Tecnología / Fundador</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Chief Technology Officer (CTO)</p>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Lidera la ingeniería de software, el diseño de la arquitectura multi-instancia en Docker y la infraestructura Linux resiliente. Garantiza que cada cliente opere con aislamiento total y rendimiento de grado industrial.
+            </p>
+
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80 space-y-2 text-[11px] font-mono text-slate-600 dark:text-slate-400">
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-brand-accent"></i>
+                <span>Docker Containerization & Linux</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-accent"></i>
+                <span>Alta Disponibilidad & Seguridad</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Adrian Pérez (CEO & Co-Fundador) -->
+          <div class="craft-card rounded-2xl p-7 bg-slate-50 dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-5 shadow-sm">
+            <div class="flex items-center gap-4">
+              <!-- Avatar Monogram -->
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-brand-accent p-0.5 shadow-md shadow-amber-500/25 shrink-0">
+                <div class="w-full h-full bg-slate-900 dark:bg-brand-card rounded-[14px] flex items-center justify-center text-white font-extrabold text-lg tracking-wider">
+                  AP
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Adrian Pérez</h3>
+                <p class="text-xs font-semibold text-brand-accent font-mono">Director Ejecutivo / Co-Fundador</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Chief Executive Officer (CEO)</p>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Encabeza la visión comercial, la expansión de soluciones B2B y la cercanía con el sector agropecuario y comercial en Coclé. Supervisa la implementación en campo y el soporte presencial continuo.
+            </p>
+
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80 space-y-2 text-[11px] font-mono text-slate-600 dark:text-slate-400">
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="briefcase" class="w-3.5 h-3.5 text-amber-500"></i>
+                <span>Estrategia B2B & Transformación PyME</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-500"></i>
+                <span>Despliegue Presencial en Coclé</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Celeste Pérez (CFO & Legal / Co-Fundadora) -->
+          <div class="craft-card rounded-2xl p-7 bg-slate-50 dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-5 shadow-sm">
+            <div class="flex items-center gap-4">
+              <!-- Avatar Monogram -->
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-brand-accent p-0.5 shadow-md shadow-emerald-500/25 shrink-0">
+                <div class="w-full h-full bg-slate-900 dark:bg-brand-card rounded-[14px] flex items-center justify-center text-white font-extrabold text-lg tracking-wider">
+                  CP
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Celeste Pérez</h3>
+                <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono">Directora Financiera y Legal / Co-Fundadora</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Chief Financial & Legal Officer (CFO)</p>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Supervisa la gobernanza corporativa, la compatibilidad con normativas de la DGI y el MIDA, y el cumplimiento estricto con la Ley 81 de Protección de Datos Personales de la República de Panamá.
+            </p>
+
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800/80 space-y-2 text-[11px] font-mono text-slate-600 dark:text-slate-400">
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="scale" class="w-3.5 h-3.5 text-emerald-500"></i>
+                <span>Cumplimiento Ley 81 de 2019</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="file-text" class="w-3.5 h-3.5 text-emerald-500"></i>
+                <span>Normativa Fiscal DGI & PAC</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN DE COBERTURA Y SOPORTE LOCAL                                     -->
+    <!-- ========================================================================= -->
+    <section id="cobertura" class="py-24 bg-slate-100/60 dark:bg-brand-surface/20 border-t border-slate-200 dark:border-slate-850">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-14">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Soporte Presencial y Asistencia Técnica Directa en Coclé
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">
+            Eliminamos la frustración de tratar con call centers lejanos. Nuestro equipo técnico opera desde la región central con visitas directas a su comercio o finca ganadera.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="craft-card rounded-2xl p-6 bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-accent/15 text-brand-accent font-semibold">HQ & SOPORTE</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Penonomé</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Atención presencial inmediata en el casco comercial, centros de distribución, oficinas corporativas y agropecuarias.
+            </p>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300 font-mono flex items-center gap-1.5 pt-2 border-t border-slate-200 dark:border-slate-800/80">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-accent"></i>
+              <span>Tiempo respuesta: Inmediato</span>
+            </div>
+          </div>
+
+          <div class="craft-card rounded-2xl p-6 bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">AGROINDUSTRIA</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Aguadulce</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Soluciones para el sector salinero, azucarero, abarroterías mayoristas y cadenas comerciales de la región.
+            </p>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300 font-mono flex items-center gap-1.5 pt-2 border-t border-slate-200 dark:border-slate-800/80">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-accent"></i>
+              <span>Tiempo respuesta: &lt; 1 hora</span>
+            </div>
+          </div>
+
+          <div class="craft-card rounded-2xl p-6 bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">FINCAS & RETAIL</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Antón</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Visitas de campo a fincas ganaderas, cooperativas y comercios en la Riviera y comunidades agrícolas del distrito.
+            </p>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300 font-mono flex items-center gap-1.5 pt-2 border-t border-slate-200 dark:border-slate-800/80">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-accent"></i>
+              <span>Tiempo respuesta: &lt; 1 hora</span>
+            </div>
+          </div>
+
+          <div class="craft-card rounded-2xl p-6 bg-white dark:bg-brand-surface border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">HISTÓRICO & AGRO</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Natá de los Caballeros</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Modernización digital de comercios tradicionales, agropecuarios y hatos ganaderos de ceba intensiva.
+            </p>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300 font-mono flex items-center gap-1.5 pt-2 border-t border-slate-200 dark:border-slate-800/80">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-accent"></i>
+              <span>Tiempo respuesta: &lt; 45 mins</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- FORMULARIO DE CONTACTO                                                   -->
+    <!-- ========================================================================= -->
+    <section id="contacto" class="py-24 bg-white dark:bg-brand-surface/50 border-t border-slate-200 dark:border-slate-800 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-medium">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Atención B2B Personalizada</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              Inicie la Transformación Digital de su Empresa o Finca
+            </h2>
+
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              Agende una demostración práctica en sus instalaciones o una sesión de diagnóstico sin costo. Le mostraremos exactamente cómo optimizar su facturación o trazabilidad en menos de 48 horas.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <a href="https://wa.me/50760000000?text=Hola%20Phoenix%20Solutions,%20deseo%20agendar%20una%20demostraci%C3%B3n%20para%20mi%20empresa." 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="tactile-btn flex items-center gap-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="message-square" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-wider font-semibold">Canal Preferente WhatsApp</div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">+507 6000-0000 (Coclé, PA)</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">Respuesta en menos de 15 minutos</div>
+                </div>
+              </a>
+
+              <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-brand-surface border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                <div class="w-12 h-12 rounded-xl bg-slate-200 dark:bg-brand-card flex items-center justify-center shrink-0 text-brand-accent">
+                  <i data-lucide="mail" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">Correo Corporativo</div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">contacto@phoenixsolutions.pa</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">Propuestas técnicas y licitaciones</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Card -->
+          <div class="lg:col-span-7">
+            <div class="rounded-2xl p-7 sm:p-9 bg-slate-50 dark:bg-brand-card border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Solicitud de Demostración y Asesoría</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Complete sus datos para conectar de inmediato con nuestro especialista asignado a su zona.</p>
+              </div>
+
+              <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label for="fullName" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Nombre Completo <span class="text-brand-accent">*</span>
+                    </label>
+                    <input type="text" 
+                           id="fullName" 
+                           name="fullName" 
+                           required 
+                           placeholder="Ej. Ing. Carlos Mendoza" 
+                           class="w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-brand-surface border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all">
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <label for="companyName" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Empresa o Finca <span class="text-brand-accent">*</span>
+                    </label>
+                    <input type="text" 
+                           id="companyName" 
+                           name="companyName" 
+                           required 
+                           placeholder="Ej. Hacienda El Roble / Abarrotería Central" 
+                           class="w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-brand-surface border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label for="phone" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Teléfono / WhatsApp <span class="text-brand-accent">*</span>
+                    </label>
+                    <input type="tel" 
+                           id="phone" 
+                           name="phone" 
+                           required 
+                           placeholder="+507 6XXX-XXXX" 
+                           class="w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-brand-surface border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all">
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <label for="location" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Ubicación en Panamá <span class="text-brand-accent">*</span>
+                    </label>
+                    <select id="location" 
+                            name="location" 
+                            required 
+                            class="w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-brand-surface border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all">
+                      <option value="Penonomé, Coclé">Penonomé, Coclé</option>
+                      <option value="Aguadulce, Coclé">Aguadulce, Coclé</option>
+                      <option value="Antón, Coclé">Antón, Coclé</option>
+                      <option value="Natá, Coclé">Natá, Coclé</option>
+                      <option value="Otra provincia central">Otra Provincia Central (Herrera, Los Santos, Veraguas)</option>
+                      <option value="Ciudad de Panamá">Ciudad de Panamá</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="solutionType" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                    Solución de Interés <span class="text-brand-accent">*</span>
+                  </label>
+                  <select id="solutionType" 
+                          name="solutionType" 
+                          required 
+                          class="w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-brand-surface border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all">
+                    <option value="Facturación Electrónica DGI & POS (PyMEs)">Facturación Electrónica DGI & POS para Comercios y PyMEs</option>
+                    <option value="Gestión Ganadera & Trazabilidad MIDA">Gestión Ganadera, Trazabilidad MIDA & Pesajes</option>
+                    <option value="Ambas Soluciones / Suite Integral">Suite Integral (Comercio + Finca Pecuaria)</option>
+                    <option value="Desarrollo de Software a la Medida">Desarrollo de Módulo de Software a la Medida</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="notes" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                    Detalles Operativos o Requerimiento
+                  </label>
+                  <textarea id="notes" 
+                            name="notes" 
+                            rows="3" 
+                            placeholder="Describa brevemente cuántos puntos de venta tiene o el volumen aproximado de cabezas de ganado..." 
+                            class="w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-brand-surface border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all"></textarea>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                  <button type="submit" 
+                          class="tactile-btn flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-brand-accent to-orange-600 hover:from-orange-500 hover:to-brand-accent text-white font-semibold text-sm shadow-md shadow-brand-accent/25 flex items-center justify-center gap-2 focus:ring-2 focus:ring-brand-accent focus:outline-none">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Enviar Solicitud vía WhatsApp</span>
+                  </button>
+
+                  <button type="button" 
+                          onclick="sendViaMailto()"
+                          class="tactile-btn py-3 px-5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-brand-surface hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm font-semibold flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>Vía Correo</span>
+                  </button>
+                </div>
+
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 text-center pt-1">
+                  🔒 Sus datos están protegidos conforme a la Ley 81 de 2019 de la República de Panamá.
+                </p>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER                                                                   -->
+  <!-- ========================================================================= -->
+  <footer class="bg-slate-900 dark:bg-brand-dark border-t border-slate-800 py-14 text-slate-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800/80">
+        
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-brand-accent flex items-center justify-center text-white">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2c0 4.5-3 6.5-3 10 0 3.3 2.7 6 6 6s6-2.7 6-6c0-3.5-3-5.5-3-10-1.5 2-3 3-4.5 3S12.5 4 12 2z"/>
+              </svg>
+            </div>
+            <span class="font-bold text-base tracking-tight text-white">Phoenix Solutions</span>
+          </div>
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            Firma tecnológica de Coclé, República de Panamá. Especialistas en desarrollo y operación de software B2B con arquitectura multi-instancia de alta disponibilidad.
+          </p>
+          <div class="text-[11px] font-mono text-slate-400">
+            Penonomé • Antón • Aguadulce • Natá | Provincias Centrales
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-3">
+          <p class="text-xs font-semibold text-slate-200 uppercase tracking-wider">Líneas de Solución</p>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#soluciones" class="hover:text-brand-accent transition-colors">Facturación Electrónica DGI</a></li>
+            <li><a href="#soluciones" class="hover:text-brand-accent transition-colors">Control de Inventarios & POS</a></li>
+            <li><a href="#soluciones" class="hover:text-brand-accent transition-colors">Trazabilidad Bovina MIDA</a></li>
+            <li><a href="#soluciones" class="hover:text-brand-accent transition-colors">Gestión de Guías y Marcas</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-3">
+          <p class="text-xs font-semibold text-slate-200 uppercase tracking-wider">Infraestructura & Normativa</p>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#arquitectura" class="hover:text-brand-accent transition-colors">Aislamiento Docker Single-Tenant</a></li>
+            <li><a href="#cumplimiento" class="hover:text-brand-accent transition-colors">Protección de Datos (Ley 81 de 2019)</a></li>
+            <li><a href="#liderazgo" class="hover:text-brand-accent transition-colors">Equipo Fundador (Flores & Pérez)</a></li>
+            <li><a href="#cobertura" class="hover:text-brand-accent transition-colors">Red de Soporte Presencial</a></li>
+            <li><span class="text-slate-400">RUC: Registrado ante la DGI de Panamá</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div>
+          © 2026 Phoenix Solutions. Todos los derechos reservados. Registrado en Panamá.
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="hover:text-slate-300 cursor-pointer">Aviso de Privacidad Ley 81</span>
+          <span class="hover:text-slate-300 cursor-pointer">Términos de Servicio B2B</span>
+          <a href="#" class="text-brand-accent hover:underline">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- SCRIPTS                                                                  -->
+  <!-- ========================================================================= -->
+  <script>
+    // Inicializar Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      updateThemeIcon();
+    });
+
+    // Theme Switcher Logic (Light & Dark Mode)
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+      updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+      const mobileSunIcon = document.getElementById('mobileSunIcon');
+
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    // Mobile Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Switcher de Soluciones (PyMEs vs Agropecuaria)
+    function switchTab(type) {
+      const pymeBtn = document.getElementById('tabPymeBtn');
+      const agroBtn = document.getElementById('tabAgroBtn');
+      const pymeContent = document.getElementById('tabPymeContent');
+      const agroContent = document.getElementById('tabAgroContent');
+
+      if (type === 'pyme') {
+        pymeBtn.className = "tactile-btn px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-brand-accent text-white shadow-md shadow-brand-accent/25";
+        agroBtn.className = "tactile-btn px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        pymeContent.classList.remove('hidden');
+        agroContent.classList.add('hidden');
+      } else {
+        agroBtn.className = "tactile-btn px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-brand-accent text-white shadow-md shadow-brand-accent/25";
+        pymeBtn.className = "tactile-btn px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        agroContent.classList.remove('hidden');
+        pymeContent.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    // WhatsApp Directo desde el Formulario
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('fullName').value.trim();
+      const company = document.getElementById('companyName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const location = document.getElementById('location').value;
+      const solution = document.getElementById('solutionType').value;
+      const notes = document.getElementById('notes').value.trim();
+
+      const message = `*SOLICITUD DE DEMO B2B - PHOENIX SOLUTIONS*%0A%0A` +
+        `👤 *Nombre:* ${encodeURIComponent(name)}%0A` +
+        `🏢 *Empresa / Finca:* ${encodeURIComponent(company)}%0A` +
+        `📞 *Teléfono:* ${encodeURIComponent(phone)}%0A` +
+        `📍 *Ubicación:* ${encodeURIComponent(location)}%0A` +
+        `⚙️ *Solución Requerida:* ${encodeURIComponent(solution)}%0A` +
+        (notes ? `📝 *Detalles:* ${encodeURIComponent(notes)}%0A` : '') +
+        `%0A_Enviado desde phoenixsolutions.pa_`;
+
+      const whatsappUrl = `https://wa.me/50760000000?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Mailto Fallback
+    function sendViaMailto() {
+      const name = document.getElementById('fullName').value.trim() || 'Interesado';
+      const company = document.getElementById('companyName').value.trim() || 'Empresa';
+      const phone = document.getElementById('phone').value.trim();
+      const location = document.getElementById('location').value;
+      const solution = document.getElementById('solutionType').value;
+      const notes = document.getElementById('notes').value.trim();
+
+      const subject = encodeURIComponent(`Solicitud B2B: ${solution} - ${company}`);
+      const body = encodeURIComponent(
+        `Estimado equipo de Phoenix Solutions,\n\n` +
+        `Deseo solicitar información y demostración para la siguiente empresa:\n\n` +
+        `- Nombre de contacto: ${name}\n` +
+        `- Empresa / Finca: ${company}\n` +
+        `- Teléfono / WhatsApp: ${phone}\n` +
+        `- Ubicación: ${location}\n` +
+        `- Tipo de solución: ${solution}\n` +
+        `- Requerimientos: ${notes}\n\n` +
+        `Atentamente,\n${name}`
+      );
+
+      window.location.href = `mailto:contacto@phoenixsolutions.pa?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
